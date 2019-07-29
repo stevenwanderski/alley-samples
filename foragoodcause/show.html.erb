@@ -1,0 +1,30 @@
+<%= render 'layouts/flash_messages' %>
+
+<%= react_component('donor-profile/container', {
+  donor: @donor_json,
+  apiKey: @api_key,
+  donorUrl: api_nonprofits_donor_path(@donor),
+  donorUpdateUrl: api_nonprofits_donor_path(@donor),
+  donorDeleteUrl: delete_nonprofit_users_donor_path(@donor),
+  donationAddUrl: new_nonprofit_users_donation_path(donor_id: @donor.id, redirect_url: nonprofit_users_donor_path(@donor)),
+  notesUrl: api_nonprofits_donor_notes_path,
+  notesAddUrl: api_nonprofits_donor_notes_path,
+  notesPerPage: @donor_notes_per_page,
+  transactionsPerPage: @donor_transactions_per_page,
+  canEditDonor: @can_edit_donor,
+  canEditNote: @can_edit_note,
+  canAddNote: @can_add_note,
+  canAddDonation: @can_add_donation,
+  tags: @tags,
+  tagsUrl: api_nonprofits_nonprofit_tags_path,
+  tagsSuggestionsUrl: suggestions_api_nonprofits_nonprofit_tags_path,
+  countries: country_collection,
+  states: state_collection,
+  provinces: province_collection,
+  donorsSuggestionsUrl: suggestions_api_nonprofits_donor_path(@donor),
+  donorFormFieldsCreateBulkUrl: create_bulk_api_nonprofits_donor_form_fields_path,
+  donorFormFieldsUpdateBulkUrl: update_bulk_api_nonprofits_donor_form_fields_path,
+  donorRelationshipsCreateBulkUrl: create_bulk_api_nonprofits_donor_relationships_path,
+  fullContactUrl: api_nonprofits_full_contact_path,
+  donorsUrl: nonprofit_users_donors_path
+}) %>

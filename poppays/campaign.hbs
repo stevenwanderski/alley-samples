@@ -1,0 +1,23 @@
+<div role="button" class="campaign__backlink" {{action 'navigateBack'}} data-test-campaign-backlink='true'>
+</div>
+
+{{campaign-full
+  campaign=model
+  showGigForm=(action 'showGigForm')
+  dismissCampaign=(action 'showDismissCampaignConfirm')
+}}
+
+{{liquid-outlet class='campaign__apply-overlay' containerless=true}}
+
+{{#if showDismissModal}}
+  {{campaign-dismissal-dialog
+    showPrice=(or (gt model.fixedCost 0) (gt model.suggestedBid 0))
+    onCancel=(action (mut showDismissModal) false)
+    onClose=(action (mut showDismissModal) false)
+    onDismiss=(action "dismissCampaign")
+  }}
+{{/if}}
+
+{{#if isRunning}}
+  {{poppays-loader}}
+{{/if}}
